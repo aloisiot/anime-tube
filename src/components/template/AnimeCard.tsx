@@ -1,6 +1,6 @@
 import { Card, Avatar, Button } from 'antd';
+import { useRouter } from 'next/router';
 import Anime from '../../Model/Anime';
-
 const { Meta } = Card;
 
 interface AnimeCardProps {
@@ -8,6 +8,8 @@ interface AnimeCardProps {
 }
 
 export default function AnimeCard(props: AnimeCardProps){
+    const router = useRouter()
+
     return (
         <Card
             style={{ width: 260, margin: 16 }}
@@ -18,7 +20,15 @@ export default function AnimeCard(props: AnimeCardProps){
             />
             }
             actions={[
-                <Button type='primary' key={"view-details"}>Mais detalhes</Button>
+                <Button
+                    key={"view-details"}
+                    onClick={() => {
+                        router.push(`/animeDetails/${props.anime.videoId}`)
+                        console.log(props.anime.videoId)
+                    }}
+                >
+                    Mais detalhes
+                </Button>
             ]}
         >
             <Meta

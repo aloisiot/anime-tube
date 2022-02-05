@@ -25,6 +25,7 @@ export default function CardGrid(props: CardGridProps){
         )
 
         const anime = new Anime(
+            data.attributes.youtubeVideoId,
             data.attributes.canonicalTitle,
             urlImage,
             description

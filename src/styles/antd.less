@@ -1,4 +1,5 @@
 @import "~antd/dist/antd.less";
+@import './theme.less';
 
 @primary-color: #003295; // primary color for all components
 @link-color: #1890ff; // link color
@@ -10,15 +11,12 @@
 @text-color: rgba(0, 0, 0, 0.65); // major text color
 @text-color-secondary: rgba(0, 0, 0, 0.45); // secondary text color
 @disabled-color: rgba(0, 0, 0, 0.25); // disable state color
-@border-radius-base: 2px; // major border radius
+@border-radius-base: 6px; // major border radius
 @border-color-base: #d9d9d9; // major border color
 @box-shadow-base: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
   0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05); // major shadow for layers
 
-@default-background: "#FFF";
-
 .layout{
-
   h1.ant-typography{
     font-size: 3rem;
     font-weight: 900;
@@ -27,36 +25,63 @@
     max-width: 600px;
     margin-bottom: 2rem;
   }
-
   .page-header{
-    padding: 12px 4rem;
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    background-color: #FFF;
+    padding: 0.4rem 4rem;
     border-bottom: 1px solid @border-color-base;
-    
     .search-input{
       justify-self: center;
     }
   }
-
   .main-content{
     display: flex;
     flex-direction: column;
     align-items: center; 
     padding: 4rem;
+    padding-top: 100px;
   }
 }
-
-.dark-theme{
-  @default-background: "#222"
-}
-
 .ant-card {
-  
   &:hover {
     box-shadow: @box-shadow-base;
   }
-
   .ant-card-meta-title{
     font-family: 'Overlock', 'Fira Sans';
     font-weight: 900;
+  }
+}
+.page-footer{
+  display: flex;
+  justify-content: center;
+  font-size: 1.1rem;
+  border-top: 1px solid @border-color-base;
+  background-color: #FFF;
+  padding: 0.4rem 4rem;
+}
+#__next .toggle-theme{
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  height: 24px;
+  width: 48px;
+  background-color: #ddd;
+  border-radius: 12px;
+  padding: 3px;
+  &.theme-dark{
+    flex-direction: row-reverse;
+    background-color: #444;
+    div{
+      background-color: #aaa;
+    }
+  }
+  div {
+    float: left;
+    height: 18px;
+    width: 18px;
+    background: #fff;
+    border-radius: 12px;
   }
 }

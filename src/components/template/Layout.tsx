@@ -1,3 +1,6 @@
+import { Content } from "antd/lib/layout/layout";
+import useAppData from "../../data/hooks/useAppContext";
+import Footer from "./Footer";
 import Header from "./Header";
 
 interface LayoutProps {
@@ -5,12 +8,15 @@ interface LayoutProps {
 }
 
 export default function Layout(props: LayoutProps){
+    const { theme } = useAppData()
+
     return (
-        <div className="layout">
+        <div className={`layout ${theme}`}>
             <Header onSearch={() => false} />
-            <main className="main-content">
+            <Content className="main-content">
                 {props.children}
-            </main>
+            </Content>
+            <Footer />
         </div>
     )
 }

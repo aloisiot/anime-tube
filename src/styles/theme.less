@@ -1,0 +1,42 @@
+#__next .dark {
+    --primari-bg: #111;
+    background-color: #111;
+    color: #EEE;
+    
+    .ant-typography{
+        color: #EEE;
+    }
+    :is(
+        .page-header,
+        .page-footer,
+        .ant-card-actions,
+        .ant-card-body,
+        .ant-btn,
+        .ant-card,
+        .ant-input-group-addon,
+        .ant-card-bordered,
+    ){
+        background-color: #111;
+        border: 1px solid #222;
+        color: #EEE
+    }
+
+    .ant-card-meta-title{
+        color: #EEE;
+    }
+    .ant-card-meta-description {
+        color: #BBB
+    }
+    .ant-input{
+        color: #EEE;
+        border: 1px solid #333;
+        background-color: #222;
+        span{
+           border: 1px solid #333;
+        }
+    }
+    :is(.ant-btn-primary, .ant-input-search-button){
+        background-color: @primary-color;
+    }
+    
+}
