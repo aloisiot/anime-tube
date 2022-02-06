@@ -15,7 +15,7 @@ npm run dev
 
 Abra [http://localhost:3000](http://localhost:3000) com o seu navegador favorito para ver o resultado.
 
-## Stack
+## Stacks
 
 * [Next.js](https://nextjs.org/) - Frameworck baseado em [Reack.js]() usado para a construção de aplicações web SPA;
 * [Ant.design](https://ant.design/) - Biblioteca de componentes de UI;

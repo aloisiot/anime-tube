@@ -1,5 +1,5 @@
 # Componentes
-Saiba mais sobre os componentes presentes nessa aplicação e sua utilidade
+Saiba mais sobre os componentes de UI presentes nessa aplicação e sua utilidade
 ---
 
 * ## AnimeCard
