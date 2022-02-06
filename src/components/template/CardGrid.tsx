@@ -10,8 +10,6 @@ interface CardGridProps {
 
 export default function CardGrid(props: CardGridProps){
 
-    console.log(props.data)
-
     const cards = props.data?.map?.((data: any, i: number) => {
         const description = (
             data.attributes.description.length > 20 ?
@@ -25,6 +23,7 @@ export default function CardGrid(props: CardGridProps){
         )
 
         const anime = new Anime(
+            data.id,
             data.attributes.youtubeVideoId,
             data.attributes.canonicalTitle,
             urlImage,

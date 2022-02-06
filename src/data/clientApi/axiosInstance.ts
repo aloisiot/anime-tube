@@ -6,7 +6,6 @@ const instance = axios.create({
         'Accept': 'application/vnd.api+json',
         'Content-Type': 'application/vnd.api+json'
     },
-    // transformResponse: [(resp) =>  resp.data]
 });
 
 export default instance

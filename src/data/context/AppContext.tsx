@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { getAnimes } from "../client";
+import { getAnimes, getAnimeById as getById } from "../clientApi";
 
 type Theme = "" | "dark"
 
@@ -9,7 +9,7 @@ interface AppContextProps{
     pageOffset: number
     loadAnimes?: (pageOffset: number) => Promise<void>
     toggleTheme?: () => void
-    getAnimeById?: (id : number) => any
+    getAnimeById?: (id : string) => any
 }
 
 const AppContext = createContext<AppContextProps>({
@@ -34,6 +34,9 @@ export function AppProvider(props: any){
 
     async function loadAnimes(pageOffset: number){
         setPageOffSet(pageOffset)
+        if(pageOffset === 0) {
+            sessionStorage.removeItem("animes")
+        }
         const storage = getStorage()
         const animes = await getAnimes(pageOffset)
         const newStorage = storage ? storage.animes.concat(animes) : animes
@@ -45,10 +48,15 @@ export function AppProvider(props: any){
         setAnimes(newStorage)
     }
 
-    function getAnimeById(id: number) {
+    function getAnimeById(id: string) {
         const storage = getStorage()
         const anime = storage.animes.filter((a: any) => a.id === id)
-        return anime
+        const result =  anime.length > 0 ? anime[0] : anime
+        if(result) {
+            return result
+        } else {
+            return getById(id)
+        }
     }
 
     function toggleTheme(){

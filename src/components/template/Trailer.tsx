@@ -1,17 +1,30 @@
+import { useEffect, useState } from "react"
+import YouTube, { Options } from 'react-youtube';
+
 interface TrailerProps {
-    videoId?: string
+    className?: string
+    videoId: string
 }
 
 export default function Trailer(props: TrailerProps) {
+    const opts: Options = {
+        height: '360',
+        width: '640',
+        playerVars: {
+          autoplay: 0,
+        }
+    }
+    
+    function onReady(event: any) {
+        event.target.pauseVideo();
+      }
+
     return (
-        <iframe
-            width="560"
-            height="315"
-            src={`https://www.youtube.com/embed/${props.videoId}`}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-        ></iframe>
+        <div className={props.className}>
+            <YouTube
+            videoId={props.videoId}
+            opts={opts}
+            onReady={onReady} />
+        </div>
     )
 }
