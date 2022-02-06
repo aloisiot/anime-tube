@@ -12,7 +12,7 @@ export default function AnimeCard(props: AnimeCardProps){
 
     return (
         <Card
-            style={{ width: 260, margin: 16 }}
+            className='anime-card'
             cover={
             <img
                 alt={props.anime.title}
@@ -21,6 +21,7 @@ export default function AnimeCard(props: AnimeCardProps){
             }
             actions={[
                 <Button
+                type='primary'
                     key={"view-details"}
                     onClick={() => {
                         router.push(`/animeDetails/${props.anime.id}`)

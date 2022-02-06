@@ -1,7 +1,7 @@
 @import "~antd/dist/antd.less";
 @import './theme.less';
 
-@primary-color: #003295; // primary color for all components
+@primary-color: #0d3d9c; // primary color for all components
 @link-color: #1890ff; // link color
 @success-color: #52c41a; // success state color
 @warning-color: #faad14; // warning state color
@@ -17,42 +17,71 @@
   0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05); // major shadow for layers
 
 .layout{
+  .flex-items-center{
+    display: flex;
+    align-items: center;
+  }
+  
+  .container{
+    width: 96%;
+    @media(min-width: 540px ){
+      width: 520px;
+    }
+    @media(min-width: 960px ){
+      width: 840px;
+    }
+    @media(min-width: 1200px ){
+      width: 1080px;
+    }
+  }
+  .search-input{
+    @media(max-width: 518px){
+      display: none;
+    }
+  }
+  .plus-btn{
+    width: 48px;
+    margin-top: 64px;
+  }
   h1.ant-typography{
     font-size: 3rem;
     font-weight: 900;
-    text-align: center;
-    color: @primary-color;
-    max-width: 600px;
     margin-bottom: 2rem;
   }
+  :is(h1, h2, h3){
+      color: @primary-color;
+  }
   .page-header{
+    .flex-items-center();
+    justify-content: center;
     z-index: 999;
     position: fixed;
     width: 100%;
     background-color: #FFF;
-    padding: 0.4rem 4rem;
+    padding: 0.4rem;
     border-bottom: 1px solid @border-color-base;
-    .search-input{
-      justify-self: center;
-    }
   }
+  
   .main-content{
+    .flex-items-center();
     min-height: 100vh;
-    display: flex;
     flex-direction: column;
-    align-items: center; 
-    padding: 4rem;
+    padding: 4rem 0;
     padding-top: 100px;
+    margin: auto;
   }
+  
   .ant-card {
     &:hover {
       box-shadow: @box-shadow-base;
     }
+    
     .ant-card-meta-title{
       font-family: 'Overlock', 'Fira Sans';
       font-weight: 900;
     }
   }
+  
   .page-footer{
     display: flex;
     justify-content: center;
@@ -61,6 +90,7 @@
     background-color: #FFF;
     padding: 0.4rem 4rem;
   }
+  
   .toggle-theme{
     display: flex;
     justify-content: space-between;
@@ -70,13 +100,16 @@
     background-color: #ddd;
     border-radius: 12px;
     padding: 3px;
+    
     &.theme-dark{
       flex-direction: row-reverse;
       background-color: #444;
+      
       div{
         background-color: #aaa;
       }
     }
+
     div {
       float: left;
       height: 18px;
@@ -85,21 +118,17 @@
       border-radius: 12px;
     }
   }
-  .no-trailer{
-    margin: 64px 0;
-    background-color: #444;
-    display: flex;
-    justify-content: center;
-    padding: 64px 0;
-    max-width: 100%;
-    font-size: xx-large;
-    font-weight: bold;
-  }
+ 
   .anime-description{
     margin-top: 24px;
-    max-width: 640px;
   }
-  .ant-typography:is(h1, h2, h3, h4, h5, h6){
-    text-align: center;
+
+  .anime-card{
+    width: 240px;
+    margin-bottom: 24px;
+
+    @media (max-width: 522px) {
+      width: 100%
+    }
   }
 }

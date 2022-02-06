@@ -8,8 +8,8 @@ interface TrailerProps {
 
 export default function Trailer(props: TrailerProps) {
     const opts: Options = {
-        height: '360',
-        width: '640',
+        height: "400",
+        width: '100%',
         playerVars: {
           autoplay: 0,
         }
@@ -17,7 +17,7 @@ export default function Trailer(props: TrailerProps) {
     
     function onReady(event: any) {
         event.target.pauseVideo();
-      }
+    }
 
     return (
         <div className={props.className}>

@@ -13,7 +13,7 @@ export default function Layout(props: LayoutProps){
     return (
         <div className={`layout ${theme}`}>
             <Header onSearch={() => false} />
-            <Content className="main-content">
+            <Content className="main-content container">
                 {props.children}
             </Content>
             <Footer />

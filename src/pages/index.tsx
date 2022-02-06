@@ -5,15 +5,16 @@ import { Button, Typography } from 'antd';
 import CardGrid from '../components/template/CardGrid';
 import useAppData from '../data/hooks/useAppContext'
 import { useCallback, useEffect } from 'react';
+import { PlusIcon } from '../components/icons';
 
 const { Title } = Typography;
 
 const Home: NextPage = () => {
-  const { animes, pageOffset, loadAnimes } = useAppData()
+  const { animes, pageOffset, setAnimeCollection } = useAppData()
   
   const reloadAnimes = useCallback(() => {
-    loadAnimes?.(pageOffset + 1)
-  }, [loadAnimes, pageOffset])
+    setAnimeCollection?.(pageOffset + 1)
+  }, [setAnimeCollection, pageOffset])
 
   useEffect(() => {
     if(pageOffset === 0){
@@ -33,9 +34,10 @@ const Home: NextPage = () => {
         <Title>Fique por dentro do que há de melhor no mundo dos animes</Title>
         <CardGrid data={animes} />
         <Button
-          type='primary'
+          className='plus-btn'
+          type='text'
           onClick={() => reloadAnimes()}>
-            Veja mais
+            {PlusIcon}
           </Button>
       </Layout>
     </div>

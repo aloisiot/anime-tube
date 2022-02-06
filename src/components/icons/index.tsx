@@ -39,3 +39,11 @@ export const SunIcon = (
         <path d="M12.5357 13.9493C12.1452 13.5588 12.1452 12.9256 12.5357 12.5351C12.9262 12.1446 13.5594 12.1446 13.9499 12.5351L15.3641 13.9493C15.7547 14.3398 15.7547 14.973 15.3641 15.3635C14.9736 15.754 14.3405 15.754 13.9499 15.3635L12.5357 13.9493Z" fill="#E89029"/>
     </svg>
 )
+
+export const PlusIcon = (
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="24" fill="#0D3D9C"/>
+        <rect x="22" y="8" width="4" height="32" rx="2" fill="white"/>
+        <rect x="40" y="22" width="4" height="32" rx="2" transform="rotate(90 40 22)" fill="white"/>
+    </svg>
+)

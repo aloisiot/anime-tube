@@ -25,24 +25,25 @@ export default function Header(props: HeaderProps){
   
   return (
       <header className='page-header'>
-          <Row  align="middle" justify='space-between'>
-            <Col style={{cursor: "pointer"}}>
-              <Link passHref href={"/"}>
-                {theme === "dark" ? LogoDarkTheme : Logo}
-              </Link>
-            </Col>
-            <Col >
-              <Search
-                className='search-input'
-                placeholder="search"
-                style={{ maxWidth: 304 }}
-                onSearch={onSearch} enterButton
-              />
-            </Col>
-            <Col>
-              <ToggleTheme />
-            </Col>
-          </Row>
+          <div className="container">
+            <Row  align="middle" justify='space-between'>
+              <Col style={{cursor: "pointer"}}>
+                <Link passHref href={"/"}>
+                  {theme === "dark" ? LogoDarkTheme : Logo}
+                </Link>
+              </Col>
+              <Col >
+                <Search
+                  className='search-input'
+                  placeholder="search"
+                  onSearch={onSearch} enterButton
+                />
+              </Col>
+              <Col>
+                <ToggleTheme />
+              </Col>
+            </Row>
+          </div>
       </header>
     )
 }
