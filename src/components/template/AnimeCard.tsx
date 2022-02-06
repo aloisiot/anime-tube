@@ -16,6 +16,7 @@ export default function AnimeCard(props: AnimeCardProps){
             cover={
             // eslint-disable-next-line @next/next/no-img-element
             <img // O uso do componet Image do Nex poderia ser problemático pois não se sabe previamente o tamanho da imagem
+                loading='lazy'
                 alt={props.anime.title}
                 src={props.anime.urlImage}
             />
