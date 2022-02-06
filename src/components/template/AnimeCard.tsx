@@ -23,8 +23,7 @@ export default function AnimeCard(props: AnimeCardProps){
                 <Button
                     key={"view-details"}
                     onClick={() => {
-                        router.push(`/animeDetails/${props.anime.videoId}`)
-                        console.log(props.anime.videoId)
+                        router.push(`/animeDetails/${props.anime.id}`)
                     }}
                 >
                     Mais detalhes

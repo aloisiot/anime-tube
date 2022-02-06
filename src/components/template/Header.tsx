@@ -1,9 +1,9 @@
 import { Input, Col, Row } from 'antd';
 import { AudioOutlined } from '@ant-design/icons';
 import { Logo, LogoDarkTheme } from '../icons';
-import { useRouter } from 'next/router';
 import ToggleTheme from './ToggleTheme';
 import useAppData from '../../data/hooks/useAppContext';
+import Link from 'next/link';
 const { Search } = Input;
 
 const suffix = (
@@ -13,7 +13,7 @@ const suffix = (
       color: '#1890ff',
     }}
   />
-);
+)
 
 interface HeaderProps{
   onSearch: (value: string) => void
@@ -26,16 +26,18 @@ export default function Header(props: HeaderProps){
   return (
       <header className='page-header'>
           <Row  align="middle" justify='space-between'>
-            <Col>
-              {theme === "dark" ? LogoDarkTheme : Logo}
+            <Col style={{cursor: "pointer"}}>
+              <Link passHref href={"/"}>
+                {theme === "dark" ? LogoDarkTheme : Logo}
+              </Link>
             </Col>
             <Col >
               <Search
                 className='search-input'
                 placeholder="search"
                 style={{ maxWidth: 304 }}
-                onSearch={onSearch} enterButton />
-
+                onSearch={onSearch} enterButton
+              />
             </Col>
             <Col>
               <ToggleTheme />
