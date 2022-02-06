@@ -27,7 +27,7 @@ const Home: NextPage = () => {
       </Head>
       
       <Layout>
-        <Title>Fique por dentro do que há de melhor no mundo dos animes</Title>
+        <Title>The best of the anime world you find here</Title>
         <CardGrid data={animes} />
         <Button
           className='plus-btn'

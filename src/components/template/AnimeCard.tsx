@@ -14,7 +14,8 @@ export default function AnimeCard(props: AnimeCardProps){
         <Card
             className='anime-card'
             cover={
-            <img
+            // eslint-disable-next-line @next/next/no-img-element
+            <img // O uso do componet Image do Nex poderia ser problemático pois não se sabe previamente o tamanho da imagem
                 alt={props.anime.title}
                 src={props.anime.urlImage}
             />
@@ -27,7 +28,7 @@ export default function AnimeCard(props: AnimeCardProps){
                         router.push(`/animeDetails/${props.anime.id}`)
                     }}
                 >
-                    Mais detalhes
+                    About
                 </Button>
             ]}
         >

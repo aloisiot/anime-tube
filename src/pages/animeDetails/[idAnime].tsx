@@ -47,10 +47,28 @@ const AnimeDetails : NextPage = () => {
                         )}
                         {currentAnime && (
                             <div className="anime-description">
-                                <Title level={2}>Description</Title>
+                                <Title level={2}>
+                                    Synopse
+                                </Title>
                                 <Typography>
                                     {currentAnime.attributes?.description}
                                 </Typography>
+                                <Title level={2}>
+                                    Description
+                                </Title>
+                                <Typography>
+                                    {currentAnime.attributes?.synopsis}
+                                </Typography>
+                                <div style={{marginTop: "1rem"}}>
+                                <Typography>
+                                       <strong>Started date: </strong>
+                                       {currentAnime.attributes?.startDate}
+                                    </Typography>
+                                    <Typography>
+                                       <strong>Status: </strong>
+                                       {currentAnime.attributes?.status}
+                                    </Typography>
+                                </div>
                             </div>
                         )}
                     </Col>
