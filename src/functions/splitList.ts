@@ -5,16 +5,14 @@ export default function splitList(data: any[], numCols: number): any | null{
         let count = 0
         
         data.forEach((d, i) => {
+            col.push(d)
             if(count < (data.length / numCols) - 1){
-                col.push(d)
                 count++
             } else if(i < data.length - 1){
-                col.push(d)
                 columns.push(col)
                 col = []
                 count = 0
             } else {
-                col.push(d)
                 columns.push(col)
             }
         })
