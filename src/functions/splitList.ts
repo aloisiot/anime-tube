@@ -7,7 +7,7 @@
  * Obs: Se a quantidade de sublistas for maior que metade do comprimento da lista,
  * entao o conterá uma quantidade de sublistas igual a metade do comprimento da lista;
  */
-export default function splitList(list: any[], qtdSubLists: number) {
+export default function splitList(list: any[], qtdSubLists: number): any[] {
     var result: any = [[]];
     const max = Math.ceil(list.length / qtdSubLists)
     var subListIndex = 0;

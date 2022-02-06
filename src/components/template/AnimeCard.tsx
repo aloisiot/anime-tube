@@ -1,4 +1,4 @@
-import { Card, Avatar, Button } from 'antd';
+import { Card,  Button } from 'antd';
 import { useRouter } from 'next/router';
 import Anime from '../../Model/Anime';
 const { Meta } = Card;

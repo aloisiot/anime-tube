@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import YouTube, { Options } from 'react-youtube';
 
 interface TrailerProps {

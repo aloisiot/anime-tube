@@ -1,7 +1,7 @@
 @import "~antd/dist/antd.less";
 @import './theme.less';
 
-@primary-color: #0d3d9c; // primary color for all components
+@primary-color: #80082c; // primary color for all components
 @link-color: #1890ff; // link color
 @success-color: #52c41a; // success state color
 @warning-color: #faad14; // warning state color
@@ -75,6 +75,9 @@
   }
   
   .ant-card {
+    width: 100%;
+    margin-bottom: 24px;
+    
     &:hover {
       box-shadow: @box-shadow-base;
     }
@@ -83,6 +86,17 @@
       font-family: 'Overlock', 'Fira Sans';
       font-weight: 900;
     }
+
+    @media (min-width: 400px) {
+      width: 160px
+    }
+    @media (min-width: 460px) {
+      width: 180px;
+    }
+    @media (min-width: 540px) {
+      width: 240px;
+    }
+    
   }
   
   .page-footer{
@@ -124,14 +138,5 @@
  
   .anime-description{
     margin-top: 24px;
-  }
-
-  .anime-card{
-    width: 240px;
-    margin-bottom: 24px;
-
-    @media (max-width: 522px) {
-      width: 100%
-    }
   }
 }

@@ -1,6 +1,5 @@
-import { Col, Row, Typography } from "antd";
+import { Typography } from "antd";
 import Link from "next/link";
-import { Logo } from "../icons";
 
 export default function Footer(){
     return (

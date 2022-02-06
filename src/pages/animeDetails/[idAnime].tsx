@@ -1,4 +1,4 @@
-import { Col, Row, Typography } from "antd";
+import { Col, Typography } from "antd";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -10,50 +10,53 @@ const { Title } = Typography;
 
 const AnimeDetails : NextPage = () => {
     const router = useRouter()
-    const [anime, setAnime] = useState<any>(null)
     const [videoId, setVideoId] = useState<string>()
     const [idAnime, setId] = useState<any>(router.query.idAnime)
-    const { getAnimeById } = useAppData()
+    const { setAnimeId, currentAnime } = useAppData()
 
     useEffect(() => {
-        setAnime(getAnimeById?.(idAnime))
-    }, [getAnimeById, idAnime])
+        setAnimeId?.(idAnime)
+    }, [setAnimeId, idAnime])
     
     useEffect(() => {
         setId(router.query.idAnime)
     }, [router.query.idAnime])
 
-
     useEffect(() => {
-        setVideoId(anime?.attributes?.youtubeVideoId)
-    }, [anime])
+        setVideoId(currentAnime?.attributes?.youtubeVideoId)
+    }, [currentAnime])
 
     return (
         <>
-            <Head>
-                <title>
-                    AnimeTube { anime && "| " + anime.attributes.canonicalTitle}
-                </title>
-            </Head>
+        {currentAnime && (
+            <>
+                <Head>
+                    <title>
+                        AnimeTube {currentAnime.attributes.canonicalTitle}
+                    </title>
+                </Head>
 
-            <Layout>
-                <Col>
-                    <Title>{anime?.attributes?.canonicalTitle}</Title>
-                    {videoId && (
-                        <Trailer
-                            className="trailer-anime"
-                            videoId={videoId} />
-                    )}
-                    {anime && (
-                        <div className="anime-description">
-                            <Title level={2}>Description</Title>
-                            <Typography>
-                                {anime.attributes?.description}
-                            </Typography>
-                        </div>
-                    )}
-                </Col>
-            </Layout>
+                <Layout>
+                    <Col>
+                        <Title>{currentAnime?.attributes?.canonicalTitle}</Title>
+                        {videoId && (
+                            <Trailer
+                                className="trailer-anime"
+                                videoId={videoId}
+                            />
+                        )}
+                        {currentAnime && (
+                            <div className="anime-description">
+                                <Title level={2}>Description</Title>
+                                <Typography>
+                                    {currentAnime.attributes?.description}
+                                </Typography>
+                            </div>
+                        )}
+                    </Col>
+                </Layout>
+            </>
+        )}
         </>
     )
 }

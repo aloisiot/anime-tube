@@ -13,6 +13,7 @@ export default function CardGrid(props: CardGridProps){
     const [qtdColumns, setQtdColumns] = useState<number>(4)
 
     useEffect(() => {
+        // Controla o número de colunas de acordo com a largura da tela
         window.addEventListener("resize", () => {
             if(window.innerWidth < 1200 && 960 <= window.innerWidth) {
                 setQtdColumns(3)

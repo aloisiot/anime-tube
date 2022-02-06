@@ -4,23 +4,19 @@ import Layout from '../components/template/Layout'
 import { Button, Typography } from 'antd';
 import CardGrid from '../components/template/CardGrid';
 import useAppData from '../data/hooks/useAppContext'
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { PlusIcon } from '../components/icons';
 
 const { Title } = Typography;
 
 const Home: NextPage = () => {
-  const { animes, pageOffset, setAnimeCollection } = useAppData()
-  
-  const reloadAnimes = useCallback(() => {
-    setAnimeCollection?.(pageOffset + 1)
-  }, [setAnimeCollection, pageOffset])
+  const { animes, pageOffset, loadAnimes } = useAppData()
 
   useEffect(() => {
     if(pageOffset === 0){
-      reloadAnimes()
+      loadAnimes?.(1)
     }
-  }, [reloadAnimes, pageOffset])
+  }, [loadAnimes, pageOffset])
 
   return (
     <div>
@@ -36,7 +32,7 @@ const Home: NextPage = () => {
         <Button
           className='plus-btn'
           type='text'
-          onClick={() => reloadAnimes()}>
+          onClick={() => loadAnimes?.(pageOffset + 1)}>
             {PlusIcon}
           </Button>
       </Layout>
