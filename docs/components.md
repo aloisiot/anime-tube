@@ -55,6 +55,6 @@ Saiba mais sobre os componentes de UI presentes nessa aplicação e sua utilidad
     * **videoId** : Id do video a ser apresentado;
 
 
-[inicio](../README.md)
-[Model](./model.md)
-[data](./data.md)
+* [inicio](../README.md)
+* [Model](./model.md)
+* [data](./data.md)
