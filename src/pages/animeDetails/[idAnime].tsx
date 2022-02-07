@@ -60,12 +60,6 @@ const AnimeDetails : NextPage = () => {
                         )}
                         <div className="anime-description">
                             <Title level={2}>
-                                Synopse
-                            </Title>
-                            <Typography>
-                                {anime.attributes?.description}
-                            </Typography>
-                            <Title level={2}>
                                 Description
                             </Title>
                             <Typography>
