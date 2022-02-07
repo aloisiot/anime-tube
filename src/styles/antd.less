@@ -47,9 +47,10 @@
     margin-top: 64px;
   }
   h1.ant-typography{
+    width: 100%;
     font-size: 3rem;
     font-weight: 900;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
   :is(h1, h2, h3){
       color: @primary-color;
@@ -75,9 +76,17 @@
   }
   
   .ant-card {
-    width: 100%;
     margin-bottom: 24px;
-    
+
+    .ant-card-body{
+      padding: 16px;
+      min-height: 120px;
+
+      .ant-card-meta-description{
+        color: #333;
+      }
+    }
+
     &:hover {
       box-shadow: @box-shadow-base;
     }
@@ -102,7 +111,6 @@
   .page-footer{
     display: flex;
     justify-content: center;
-    font-size: 1.1rem;
     border-top: 1px solid @border-color-base;
     background-color: #FFF;
     padding: 0.4rem 4rem;

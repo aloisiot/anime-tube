@@ -3,23 +3,17 @@ type action = {
     payload: any
 }
 
-export interface initialState {
-    currentAnime: any,
-    animes: any[],
-    pageOffset: number
-}
-
-export default function AppReducer(state: any, action: any){
+export default function AppReducer(state: any, action: action){
 
     function handlerAnimes(){
         if(action.payload){
             const currentValue = state.animes ? state.animes : []
             const animes = currentValue ? currentValue.concat(action.payload) : action.payload
-            const offset = state.pageOffset
             const newState = {
                 animes: animes,
                 currentAnime: state.currentAnime,
-                pageOffset: state.pageOffset + 20
+                pageOffset: state.pageOffset + 20,
+                filteredAnimes: state.filtered
             }
             return newState
         }
@@ -31,7 +25,21 @@ export default function AppReducer(state: any, action: any){
             const newState = {
                 animes: state.animes,
                 currentAnime: action.payload[0],
-                pageOffset: state.pageXOffset
+                pageOffset: state.pageXOffset,
+                filteredAnimes: state.filtered
+            }
+            return newState
+        }
+        return state
+    }
+
+    function handlerAnimesFilteredByKeyWord(){
+        if(action.payload){
+            const newState = {
+                animes: state.animes,
+                currentAnime: state.currentAnime,
+                pageOffset: state.pageXOffset,
+                filteredAnimes: action.payload
             }
             return newState
         }
@@ -44,6 +52,9 @@ export default function AppReducer(state: any, action: any){
         
         case "load-current-anime":
             return handlerCurrentAnime()
+
+        case "filtered-by-keyword":
+            return handlerAnimesFilteredByKeyWord()
 
         default:
             return state

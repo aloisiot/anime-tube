@@ -14,5 +14,11 @@ export function getAnimes(pageOffset: number){
 }
 
 export function getAnimeById(id: string){
-    return instance.get(`/anime?filter[id]=${id}`).then(resp => resp.data.data)
+    return instance
+            .get(`/anime?filter[id]=${id}`).then(resp => resp.data.data)
+}
+
+export function search(keyWord: string){
+    return instance.get(`/anime/?filter[text]=${keyWord}`)
+            .then(resp => resp.data.data)
 }

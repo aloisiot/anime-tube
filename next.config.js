@@ -4,12 +4,9 @@ const  withLess  =  require ( "next-with-less" ) ;
 
 const nextConfig = withLess ({
   images: {
-    domains: ['os.alipayobjects.com', 'img.freepik.com'],
+    domains: ['media.kitsu.io'],
   },
   reactStrictMode: true,
-  lessLoaderOptions : { 
-    /* ... */ 
-  } ,
 })
 
 module.exports = nextConfig

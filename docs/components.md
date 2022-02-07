@@ -38,9 +38,6 @@ Saiba mais sobre os componentes de UI presentes nessa aplicação e sua utilidad
     ### Propriedades
     * **data** : Lista de objeto sem um tipo previsivel usada para renderizar os cardes presentes na grade;
 
-    ### Estados
-    * **qtdColumns**: quantidade de colunas a serem rederizadas;
-
 ---
 
 * ## ToggleTheme
