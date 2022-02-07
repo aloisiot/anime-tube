@@ -43,8 +43,12 @@ Hook para tornar disponivel o uso do contexto pela aplicação.
 ```
 
 ## axios
-Contem a instancia axios e alguns métodos predefinidos a comunicação com a API
+Contem a instancia axios e alguns métodos predefinidos para a comunicação com a API
 ### Métodos
-* **getAnimes**: Retorna uma coleção de animes paseada em um offSet de paginação da API;
+* **getAnimes**: Retorna uma coleção de animes baseada em um offSet de paginação da API;
 * **getAnimeById**: Solicita à API um anime com base no ID;
 * **search**: Busca por resultados com base em uma palavra chave;
+
+[inicio](../README.md)
+[Components](./components.md)
+[Model](./model.md)

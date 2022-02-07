@@ -53,3 +53,8 @@ Saiba mais sobre os componentes de UI presentes nessa aplicação e sua utilidad
 
     ### Propriedades
     * **videoId** : Id do video a ser apresentado;
+
+
+[inicio](../README.md)
+[Model](./model.md)
+[data](./data.md)
