@@ -15,7 +15,7 @@ interface AppContextProps{
     searchAnimeByKeyWord?: (keyWord: any) => void
 }
 
-// Estado inicial do Store
+// Estado inicial e definição da estrutura do Store
 const initialState = {
     currentAnime: null,
     animes: [],
@@ -56,6 +56,7 @@ export function AppProvider(props: any){
         appStore.dispatch({type: "load-current-anime", payload: anime})
     }
 
+    // Alterna o tema
     function toggleTheme(){
         const newTheme: Theme =  theme === "" ? "dark" : ""
         localStorage.setItem("tema", newTheme)

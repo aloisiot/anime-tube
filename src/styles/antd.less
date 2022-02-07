@@ -1,7 +1,7 @@
 @import "~antd/dist/antd.less";
 @import './theme.less';
 
-@primary-color: #0f2d8d; // primary color for all components
+@primary-color: #175db9; // primary color for all components
 @link-color: #1890ff; // link color
 @success-color: #52c41a; // success state color
 @warning-color: #faad14; // warning state color
@@ -80,7 +80,6 @@
     padding: 0.4rem;
     border-bottom: 1px solid @border-color-base;
 
-    .ant-col
   }
   
   .main-content{
@@ -163,5 +162,15 @@
  
   .anime-description{
     margin-top: 24px;
+  }
+
+  .no-found{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .text-404{
+      font-size: 8rem;
+    }
   }
 }
