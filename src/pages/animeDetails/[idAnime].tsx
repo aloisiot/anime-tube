@@ -17,7 +17,7 @@ const AnimeDetails : NextPage = () => {
 
     useEffect(() => {
         setId(router.query.idAnime)
-    }, [router.query.idAnime])
+    }, [router.query])
     
     useEffect(() => {
         if(! anime){
@@ -30,13 +30,11 @@ const AnimeDetails : NextPage = () => {
             const store = appStore.getState()
             const currentAnime = store.currentAnime
             if(currentAnime != undefined && (! anime)) {
-                console.log(currentAnime)
                 setAnime(store.currentAnime)
             }
         })
     }, [appStore, anime])
 
-    console.log(videoId)
     useEffect(() => {
         setVideoId(anime?.attributes?.youtubeVideoId)
     }, [anime])

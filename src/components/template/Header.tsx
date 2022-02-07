@@ -21,7 +21,6 @@ interface HeaderProps{
 
 export default function Header(props: HeaderProps){
   const { theme } = useAppData()
-  const onSearch = (value: string) => console.log(value);
   
   return (
       <header className='page-header'>
@@ -36,7 +35,8 @@ export default function Header(props: HeaderProps){
                 <Search
                   className='search-input'
                   placeholder="search"
-                  onSearch={onSearch} enterButton
+                  onSearch={props.onSearch}
+                  enterButton
                 />
               </Col>
               <Col>

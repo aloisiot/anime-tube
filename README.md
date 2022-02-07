@@ -25,4 +25,3 @@ Abra [http://localhost:3000](http://localhost:3000) com o seu navegador favorito
 ## Saiba mais sobre a estrutura do projeto e suas camadas
 * [Components](./docs/components.md)
 * [Model](./docs/model.md)
-* [functions](./docs/functions)
