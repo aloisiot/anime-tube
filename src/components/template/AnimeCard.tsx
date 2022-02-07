@@ -1,4 +1,5 @@
 import { Card,  Button } from 'antd';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Anime from '../../Model/Anime';
 const { Meta } = Card;
@@ -12,10 +13,11 @@ export default function AnimeCard(props: AnimeCardProps){
 
     return (
         <Card
-            className='anime-card'
             cover={
-            // eslint-disable-next-line @next/next/no-img-element
-            <img 
+            <Image
+                objectFit='cover'
+                height={360}
+                width={400}
                 alt={props.anime.title}
                 src={props.anime.urlImage}
             />

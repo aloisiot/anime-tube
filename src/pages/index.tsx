@@ -31,7 +31,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Home - AnimeTube</title>
         <meta name="description" content="The best of the anime world" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       
       <Layout>

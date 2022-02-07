@@ -18,7 +18,7 @@ Abra [http://localhost:3000](http://localhost:3000) com o seu navegador favorito
 ## Stacks
 
 * [Next.js](https://nextjs.org/) - Frameworck baseado em [Reack.js]() usado para a construção de aplicações web SPA;
-* [Ant.design](https://ant.design/) - Biblioteca de componentes de UI;
+* [Ant Design](https://ant.design/) - Biblioteca de componentes de UI;
 * [Less](https://nextjs.org/) - Preprocessador css;
 * [Vercel]() - Servidor de deploy;
 

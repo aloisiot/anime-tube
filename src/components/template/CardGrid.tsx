@@ -26,12 +26,11 @@ export default function CardGrid(props: CardGridProps){
     const cards = props.data?.map?.((data: any, i: number) => {
         const description = (
             data.attributes.description.length > 20 ?
-            `${resumeText(data.attributes.description, 120)} ...`
+            `${resumeText(data.attributes.description, 44)} ...`
             : data.attributes.description.length
         )
         const urlImage = (
-            data.attributes.coverImage?.original ||
-            data.attributes.posterImage.medium ||
+            data.attributes.posterImage.small ||
             "/images/noImage.png"
         )
 
@@ -54,7 +53,11 @@ export default function CardGrid(props: CardGridProps){
 
     return (
         <div className="container">
-            <Row justify="space-between">
+            <Row
+                className="card-grid"
+                justify="space-between"
+                gutter={16}
+            >
                 {props.data && (renderCardColumns())}
             </Row>
         </div>
