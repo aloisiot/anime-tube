@@ -49,6 +49,8 @@ Contem a instancia axios e alguns métodos predefinidos para a comunicação com
 * **getAnimeById**: Solicita à API um anime com base no ID;
 * **search**: Busca por resultados com base em uma palavra chave;
 
-[inicio](../README.md)
-[Components](./components.md)
-[Model](./model.md)
+---
+
+* [inicio](../README.md)
+* [Components](./components.md)
+* [Model](./model.md)
