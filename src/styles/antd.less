@@ -37,24 +37,39 @@
       width: 1080px;
     }
   }
-  .search-input{
+
+  .search-input-container{
+    max-width: 60%;
+  }
+
+  .lg-logo{
     @media(max-width: 518px){
       display: none;
     }
   }
+
+  .sm-logo{
+    @media(min-width: 518px){
+      display: none;
+    }
+  }
+
   .plus-btn{
     width: 48px;
     margin-top: 64px;
   }
+
   h1.ant-typography{
     width: 100%;
     font-size: 3rem;
     font-weight: 900;
     margin-bottom: 3rem;
   }
+
   :is(h1, h2, h3){
       color: @primary-color;
   }
+
   .page-header{
     .flex-items-center();
     justify-content: center;
@@ -64,6 +79,8 @@
     background-color: #FFF;
     padding: 0.4rem;
     border-bottom: 1px solid @border-color-base;
+
+    .ant-col
   }
   
   .main-content{

@@ -1,6 +1,6 @@
 import { Input, Col, Row } from 'antd';
 import { AudioOutlined } from '@ant-design/icons';
-import { Logo, LogoDarkTheme } from '../icons';
+import { Logo, LogoDarkTheme, SmLogo } from '../icons';
 import ToggleTheme from './ToggleTheme';
 import useAppData from '../../data/hooks/useAppContext';
 import Link from 'next/link';
@@ -28,12 +28,18 @@ export default function Header(props: HeaderProps){
             <Row  align="middle" justify='space-between'>
               <Col style={{cursor: "pointer"}}>
                 <Link passHref href={"/"}>
-                  {theme === "dark" ? LogoDarkTheme : Logo}
+                  <div>
+                    <div className="lg-logo">
+                      {theme === "dark" ? LogoDarkTheme : Logo}
+                    </div>
+                    <div className="sm-logo">
+                      {SmLogo}
+                    </div>
+                  </div>
                 </Link>
               </Col>
-              <Col >
+              <Col className='search-input-container'>
                 <Search
-                  className='search-input'
                   placeholder="search"
                   onSearch={props.onSearch}
                   enterButton
