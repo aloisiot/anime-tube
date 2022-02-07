@@ -12,65 +12,78 @@ const AnimeDetails : NextPage = () => {
     const router = useRouter()
     const [videoId, setVideoId] = useState<string>()
     const [idAnime, setId] = useState<any>(router.query.idAnime)
-    const { setAnimeId, currentAnime } = useAppData()
+    const [anime, setAnime] = useState<any>()
+    const { appStore, findAnimeById } = useAppData()
 
-    useEffect(() => {
-        setAnimeId?.(idAnime)
-    }, [setAnimeId, idAnime])
-    
     useEffect(() => {
         setId(router.query.idAnime)
     }, [router.query.idAnime])
+    
+    useEffect(() => {
+        if(! anime){
+            findAnimeById?.(idAnime)
+        }
+    }, [anime, idAnime, findAnimeById])
 
     useEffect(() => {
-        setVideoId(currentAnime?.attributes?.youtubeVideoId)
-    }, [currentAnime])
+        appStore.subscribe(() => {
+            const store = appStore.getState()
+            const currentAnime = store.currentAnime
+            if(currentAnime != undefined && (! anime)) {
+                console.log(currentAnime)
+                setAnime(store.currentAnime)
+            }
+        })
+    }, [appStore, anime])
+
+    console.log(videoId)
+    useEffect(() => {
+        setVideoId(anime?.attributes?.youtubeVideoId)
+    }, [anime])
 
     return (
         <>
-        {currentAnime && (
+        {anime && (
             <>
                 <Head>
                     <title>
-                        AnimeTube {currentAnime.attributes.canonicalTitle}
+                        AnimeTube {anime.attributes.canonicalTitle}
                     </title>
                 </Head>
 
                 <Layout>
                     <Col>
-                        <Title>{currentAnime?.attributes?.canonicalTitle}</Title>
+                        <Title>{anime?.attributes?.canonicalTitle}</Title>
                         {videoId && (
                             <Trailer
                                 className="trailer-anime"
                                 videoId={videoId}
                             />
                         )}
-                        {currentAnime && (
-                            <div className="anime-description">
-                                <Title level={2}>
-                                    Synopse
-                                </Title>
-                                <Typography>
-                                    {currentAnime.attributes?.description}
+                        <div className="anime-description">
+                            <Title level={2}>
+                                Synopse
+                            </Title>
+                            <Typography>
+                                {anime.attributes?.description}
+                            </Typography>
+                            <Title level={2}>
+                                Description
+                            </Title>
+                            <Typography>
+                                {anime.attributes?.synopsis}
+                            </Typography>
+                            <div style={{marginTop: "1rem"}}>
+                            <Typography>
+                                    <strong>Started date: </strong>
+                                    {anime.attributes?.startDate}
                                 </Typography>
-                                <Title level={2}>
-                                    Description
-                                </Title>
                                 <Typography>
-                                    {currentAnime.attributes?.synopsis}
+                                    <strong>Status: </strong>
+                                    {anime.attributes?.status}
                                 </Typography>
-                                <div style={{marginTop: "1rem"}}>
-                                <Typography>
-                                       <strong>Started date: </strong>
-                                       {currentAnime.attributes?.startDate}
-                                    </Typography>
-                                    <Typography>
-                                       <strong>Status: </strong>
-                                       {currentAnime.attributes?.status}
-                                    </Typography>
-                                </div>
                             </div>
-                        )}
+                        </div>
                     </Col>
                 </Layout>
             </>

@@ -1,68 +1,46 @@
-import { createContext, useEffect, useState } from "react";
-import { getAnimes, getAnimeById as getById } from "../service";
+import { createContext, useEffect, useReducer, useState } from "react";
+import AppReducer, { initialState } from "../reducer/AppReducer";
+import { getAnimes, getAnimeById as getById } from "../axios";
+import { createStore } from 'redux'
 
 type Theme = "" | "dark"
 
 interface AppContextProps{
-    animes: any[]
+    appStore: any
     theme: Theme
-    pageOffset: number
-    currentAnime: any
-    setAnimeId?: (id: string) => void
-    loadAnimes?: (pageOffset: number) => Promise<void>
     toggleTheme?: () => void
-    getAnimeById?: (id : string) => any
+    findAnimes?: () => void
+    findAnimeById?: (id: string) => void
+}
+
+const initialState: initialState = {
+    currentAnime: null,
+    animes: [],
+    pageOffset: 0
 }
 
 const AppContext = createContext<AppContextProps>({
-    animes: [],
+    appStore: initialState,
     theme: "",
-    pageOffset: 0,
-    currentAnime: null
-})
 
-function getStore(){
-    const store = sessionStorage.getItem("animes")
-    let data
-    if(store){
-        data = JSON.parse(store)
-    }
-    return data
-}
+})
 
 export function AppProvider(props: any){
     const [theme, setTheme] = useState<Theme>("")
-    const [animes, setAnimes] = useState<any>([])
-    const [pageOffset, setPageOffSet] = useState(0)
-    const [currentAnime, setCurrentAnime] = useState<any>(null)
-    const [idAnime, setAnimeId] = useState<string>()
 
-    async function loadAnimes(pageOffset: number){
-        setPageOffSet(pageOffset)
-        if(pageOffset === 0) {
-            sessionStorage.removeItem("animes")
-        }
-        
-        const store = getStore()
-        const animes = await getAnimes(pageOffset)
-        const newStore = store ? store.animes.concat(animes) : animes
-        const data = {
-            animes: newStore,
-            pageOffset
-        }
-        sessionStorage.setItem("animes", JSON.stringify(data))
-        setAnimes(newStore)
+    const appStore = createStore(AppReducer, initialState)
+
+    async function findAnimes(){
+        const state = appStore.getState()
+        let offSet = state?.pageOffset ? state.pageOffset : 0
+        const animes = await getAnimes(offSet)
+        appStore.dispatch({type: "load-animes", payload: animes})
     }
 
-    async function getAnimeById(id: string) {
-        const store = getStore()
-        const data = store.animes.filter((a: any) => a.id === id)
-        const anime = data.length > 0 ? data[0] : null
-        let result
-        if(anime) {
-            result = anime
-        }
-        setCurrentAnime(result)
+    async function findAnimeById(id: string){
+        const state = appStore.getState()
+        const anime = await getById(id)
+        appStore.dispatch({type: "load-current-anime", payload: anime})
     }
 
     function toggleTheme(){
@@ -70,11 +48,6 @@ export function AppProvider(props: any){
         localStorage.setItem("tema", newTheme)
         setTheme(newTheme)
     }
-
-    useEffect(() => {
-        if(idAnime)
-            getAnimeById(idAnime)
-    }, [idAnime])
 
     useEffect(() => {
         const theme = localStorage.getItem("tema")
@@ -85,14 +58,11 @@ export function AppProvider(props: any){
 
     return (
         <AppContext.Provider value={{
-            animes,
+            appStore,
             theme,
             toggleTheme,
-            loadAnimes,
-            getAnimeById,
-            pageOffset,
-            currentAnime,
-            setAnimeId
+            findAnimes,
+            findAnimeById
         }}>
             {props.children}
         </AppContext.Provider>
