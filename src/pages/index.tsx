@@ -4,19 +4,27 @@ import Layout from '../components/template/Layout'
 import { Button, Typography } from 'antd';
 import CardGrid from '../components/template/CardGrid';
 import useAppData from '../data/hooks/useAppContext'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { PlusIcon } from '../components/icons';
 
 const { Title } = Typography;
 
 const Home: NextPage = () => {
-  const { animes, pageOffset, loadAnimes } = useAppData()
+  const [animes, setAnimes] = useState<any>(null)
+  const { appStore , findAnimes } = useAppData()
 
   useEffect(() => {
-    if(pageOffset === 0){
-      loadAnimes?.(1)
+    if(! appStore.animes){
+      findAnimes?.()
     }
-  }, [loadAnimes, pageOffset])
+  }, [appStore, findAnimes])
+
+  useEffect(() => {
+    appStore.subscribe(() => {
+      const store = appStore.getState()
+      setAnimes(store.animes)
+    })
+  },[appStore])
 
   return (
     <div>
@@ -32,7 +40,7 @@ const Home: NextPage = () => {
         <Button
           className='plus-btn'
           type='text'
-          onClick={() => loadAnimes?.(pageOffset + 1)}>
+          onClick={() => findAnimes?.()}>
             {PlusIcon}
           </Button>
       </Layout>
