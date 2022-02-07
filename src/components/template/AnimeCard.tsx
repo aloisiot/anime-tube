@@ -30,7 +30,7 @@ export default function AnimeCard(props: AnimeCardProps){
                         router.push(`/animeDetails/${props.anime.id}`)
                     }}
                 >
-                    About
+                    More details
                 </Button>
             ]}
         >

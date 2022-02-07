@@ -36,6 +36,7 @@ const Home: NextPage = () => {
         <Title>The best of the anime world you find here</Title>
         <CardGrid data={animes} />
         <Button
+        title='Show more'
           className='plus-btn'
           type='text'
           onClick={() => findAnimes?.()}>
