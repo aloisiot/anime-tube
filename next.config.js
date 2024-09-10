@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
 
-const  withLess  =  require ( "next-with-less" ) ;
+const withLess = require("next-with-less");
 
-const nextConfig = withLess ({
+module.exports = withLess({
   images: {
-    domains: ['media.kitsu.io'],
+    domains: ["media.kitsu.io", "media.kitsu.app"],
   },
   reactStrictMode: true,
-})
-
-module.exports = nextConfig
+});
